@@ -22,9 +22,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
+Route::get('/profile',[UserController::class, 'profile'])->name('profile');
+Route::post('/user/up',[UserController::class, 'update'])->name('user/up');
 
 Route::get('/login', function () {
     if(Auth::check()){
@@ -46,5 +45,6 @@ Route::resource('/admin', AdminController::class);
 
 //корзина
 Route::get('/basket/{id}', [BasketController::class, 'add_basket'])->name('basket');
+Route::get('/basket/del/{id}', [BasketController::class, 'del_basket'])->name('basket/del');
 Route::get('/basket', [BasketController::class, 'basket'])->name('basket');
 Route::post('/up-basket', [BasketController::class, 'up_count_basket'])->name('up-basket');;

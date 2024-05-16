@@ -11,373 +11,603 @@
 </head>
 <style>
     body {
-        font-family: 'Montserrat', sans-serif;
-        background-color: #f2f2f2;
-    }
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('../../public/img/fon.jpg');
+    color: #f2f2f2; 
+}
 
-    .product-card {
-        background-color: #fff;
-        border-radius: 25px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        overflow: hidden;
-        transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-    }
+.product-card {
+    background-color: #333;
+    border-radius: 25px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
 
-    .product-card:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
-    }
+.product-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.7);
+}
 
-    .product-card img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-    }
+.product-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
 
-    .product-card .card-body {
-        padding: 40px;
-    }
+.product-card .card-body {
+    padding: 40px;
+}
 
-    .product-card .card-title {
-        font-size: 28px;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
+.product-card .card-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-    .product-card .card-price {
-        font-size: 24px;
-        font-weight: bold;
-        color: #007bff;
-        margin-bottom: 25px;
-    }
+.product-card .card-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 25px;
+}
 
-    .product-card .btn-primary {
-        font-size: 20px;
-        padding: 15px 35px;
-        border-radius: 35px;
-    }
+.product-card .btn-primary {
+    font-size: 20px;
+    padding: 15px 35px;
+    border-radius: 35px;
+    background-color: #ffeb3b;
+    border-color: #ffeb3b;
+    color: #000;
+}
 
-    .section-title {
-        font-size: 50px;
-        font-weight: bold;
-        margin-bottom: 50px;
-        text-align: center;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    }
+.product-card .btn-primary:hover {
+    background-color: #fdd835;
+    border-color: #fdd835;
+}
 
-    .section-description {
-        font-size: 22px;
-        color: #666;
-        margin-bottom: 50px;
-        text-align: center;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    }
+.section-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1);
+}
 
-    .contact-section {
-        background-color: #fff;
-        padding: 120px 0;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
+.section-description {
+    font-size: 22px;
+    color: #ccc;
+    margin-bottom: 50px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);
+}
 
-    .contact-section .section-title {
-        font-size: 60px;
-        font-weight: bold;
-        margin-bottom: 70px;
-    }
+.contact-section {
+    background-color: #333;
+    background: rgba(28, 28, 28, 0.8);
+    padding: 120px 0;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
 
-    .contact-form {
-        background-color: #f8f9fa;
-        border-radius: 25px;
-        padding: 60px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
+.contact-section .section-title {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 70px;
+}
 
-    .contact-form .form-control {
-        border-radius: 15px;
-        font-size: 20px;
-        padding: 18px 25px;
-    }
+.contact-form {
+    background-color: #444;
+    border-radius: 25px;
+    padding: 60px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
 
-    .contact-form .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        font-size: 20px;
-        padding: 18px 45px;
-        border-radius: 35px;
-    }
+.contact-form .form-control {
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 18px 25px;
+    background-color: #555;
+    border-color: #555;
+    color: #f2f2f2;
+}
 
-    .contact-form .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #004a9b;
-    }
+.contact-form .form-control:focus {
+    background-color: #666;
+    border-color: #666;
+    color: #f9f9f9;
+}
 
-    header.bg-secondary,
-    footer.bg-secondary {
-        background-color: #6c757d !important;
-        color: #fff;
-    }
+.contact-form .btn-primary {
+    background-color: #ffeb3b;
+    border-color: #ffeb3b;
+    color: #000;
+    font-size: 20px;
+    padding: 18px 45px;
+    border-radius: 35px;
+}
 
-    header a,
-    footer a {
-        color: #fff;
-        text-decoration: none;
-    }
+.contact-form .btn-primary:hover {
+    background-color: #fdd835;
+    border-color: #fdd835;
+}
 
-    header a:hover,
-    footer a:hover {
-        color: #ccc;
-    }
+header.bg-secondary,
+footer.bg-secondary {
+    background-color: #333 !important;
+    
+    color: #f2f2f2;
+}
 
-    .hero {
-        position: relative;
-        overflow: hidden;
-        height: 800px;
-    }
+header a,
+footer a {
+    color: #f2f2f2;
+    text-decoration: none;
+    
+}
 
-    .hero .carousel-item {
-        height: 800px;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+header a:hover,
+footer a:hover {
+    color: #ccc;
+}
 
-    .hero .carousel-caption {
-        top: 50%;
-        transform: translateY(-50%);
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-    }
+.hero {
+    position: relative;
+    overflow: hidden;
+    height: 800px;
+}
 
-    .hero .carousel-caption h1 {
-        font-size: 80px;
-        font-weight: bold;
-        margin-bottom: 40px;
-    }
+.hero .carousel-item {
+    height: 800px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-    .hero .carousel-caption p {
-        font-size: 32px;
-        margin-bottom: 50px;
-    }
+.hero .carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
 
-    .hero .carousel-caption .btn-primary {
-        font-size: 22px;
-        padding: 18px 45px;
-        border-radius: 35px;
-    }
+.hero .carousel-caption h1 {
+    font-size: 80px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
 
-    .benefits-section {
-        background-color: #f8f9fa;
-        padding: 120px 0;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
+.hero .carousel-caption p {
+    font-size: 32px;
+    margin-bottom: 50px;
+}
 
-    .benefits-section .section-title {
-        font-size: 60px;
-        font-weight: bold;
-        margin-bottom: 70px;
-    }
+.hero .carousel-caption .btn-primary {
+    font-size: 22px;
+    padding: 18px 45px;
+    border-radius: 35px;
+    background-color: #ffeb3b;
+    border-color: #ffeb3b;
+    color: #000;
+}
 
-    .benefits-item {
-        text-align: center;
-        margin-bottom: 60px;
-        background-color: #fff;
-        border-radius: 25px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        padding: 50px;
-        transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-    }
+.hero .carousel-caption .btn-primary:hover {
+    background-color: #fdd835;
+    border-color: #fdd835;
+}
 
-    .benefits-item:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
-    }
+.benefits-section {
+    background-color: #444;
+    background: rgba(28, 28, 28, 0.8);
+    padding: 120px 0;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
 
-    .benefits-item .image {
-        margin-bottom: 40px;
-    }
+.benefits-section .section-title {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 70px;
+}
 
-    .benefits-item .image img {
-        max-width: 150px;
-    }
+.benefits-item {
+    text-align: center;
+    margin-bottom: 60px;
+    background-color: #333;
+    border-radius: 25px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
 
-    .benefits-item .content .title {
-        font-size: 32px;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
 
-    .benefits-item .content .description {
-        font-size: 22px;
-        color: #666;
-    }
+.benefits-item:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.7);
+}
 
-    .auth-section {
-        background-color: #f8f9fa;
-    }
+.benefits-item .image {
+    margin-bottom: 40px;
+}
 
-    .auth-section {
-        background-color: #f8f9fa;
-    }
+.benefits-item .image img {
+    max-width: 150px;
+}
 
-    .auth-card {
-        background-color: #fff;
-        max-width: 500px;
-        margin: 0 auto;
-    }
+.benefits-item .content .title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-    .form-control {
-        border: none;
-        border-radius: 10px;
-        font-size: 16px;
-        padding: 12px 20px;
-        margin-bottom: 1.5rem;
-        background-color: #f1f1f1;
-        color: #333;
-    }
+.benefits-item .content .description {
+    font-size: 22px;
+    color: #ccc;
+}
 
-    .form-control:focus {
-        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-        background-color: #e6e6e6;
-    }
+.auth-section {
+    background: rgba(28, 28, 28, 0.8);
+}
 
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        font-size: 18px;
-        padding: 12px 30px;
-        border-radius: 30px;
-    }
+.auth-card {
+    background-color: #333;
+    max-width: 500px;
+    margin: 0 auto;
+    color: #f2f2f2;
+}
 
-    .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #004a9b;
-    }
+.form-control {
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 12px 20px;
+    margin-bottom: 1.5rem;
+    background-color: #555;
+    color: #f2f2f2;
+}
 
-    .switch-to-register,
-    .switch-to-login {
-        color: #007bff;
-        font-weight: bold;
-        text-decoration: none;
-    }
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 235, 59, 0.25);
+    background-color: #666;
+    color: #f9f9f9;
+}
 
-    .switch-to-register:hover,
-    .switch-to-login:hover {
-        color: #0056b3;
-    }
+.btn-primary {
+    background-color: #ffeb3b;
+    border-color: #ffeb3b;
+    color: #000;
+    font-size: 18px;
+    padding: 12px 30px;
+    border-radius: 30px;
+}
 
-    .vape-product-card {
-        background-color: #fff;
-        border-radius: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        display: flex;
-        overflow: hidden;
-    }
+.btn-primary:hover {
+    background-color: #fdd835;
+    border-color: #fdd835;
+}
 
-    .vape-product-image-container {
-        position: relative;
-        width: 50%;
-    }
+.switch-to-register,
+.switch-to-login {
+    color: #ffeb3b;
+    font-weight: bold;
+    text-decoration: none;
+}
 
-    .vape-product-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.switch-to-register:hover,
+.switch-to-login:hover {
+    color: #fdd835;
+}
 
-    .vape-product-category {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        background-color: #007bff;
-        color: #fff;
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 14px;
-    }
+.vape-product-card {
+    background-color: #333;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    overflow: hidden;
+}
 
-    .vape-product-info {
-        width: 50%;
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+.vape-product-image-container {
+    position: relative;
+    width: 50%;
+}
 
-    .vape-product-title {
-        font-size: 28px;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
+.vape-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    .vape-product-description {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 30px;
-    }
+.vape-product-category {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #ffeb3b;
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
 
-    .vape-product-specs {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: 30px;
-    }
+.vape-product-info {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #f2f2f2;
+}
 
-    .vape-spec {
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 10px;
-    }
+.vape-product-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
 
-    .vape-spec i {
-        font-size: 18px;
-        margin-right: 10px;
-        color: #007bff;
-    }
+.vape-product-description {
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 30px;
+}
 
-    .vape-product-price {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+.vape-product-specs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
 
-    .vape-price {
-        font-size: 24px;
-        font-weight: bold;
-        color: #007bff;
-    }
+.vape-spec {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
 
-    .btn-primary {
-        font-size: 16px;
-        padding: 12px 24px;
-        border-radius: 25px;
-    }
-    .form-control-light {
-        background-color: #f8f9fa;
-        border: 1px solid #ced4da; 
-    }
+.vape-spec i {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #ffeb3b;
+}
 
-    .form-control-light:focus {
-        background-color: #e2e6ea;
-        border-color: #6c757d;
-    }
-    .number input[type="number"]::-webkit-outer-spin-button,
+.vape-product-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vape-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffeb3b;
+}
+
+.btn-primary {
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 25px;
+    background-color: #ffeb3b;
+    border-color: #ffeb3b;
+    color: #000;
+}
+
+.btn-primary:hover {
+    background-color: #fdd835;
+    border-color: #fdd835;
+}
+
+.form-control-light {
+    background-color: #555;
+    border: 1px solid #ced4da; 
+    color: #f2f2f2;
+}
+
+.form-control-light:focus {
+    background-color: #666;
+    border-color: #ccc;
+    color: #f9f9f9;
+}
+
+.number input[type="number"]::-webkit-outer-spin-button,
 .number input[type="number"]::-webkit-inner-spin-button {
     display: none;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-
     -webkit-appearance: none;
     margin: 0;
 }
+
 input:focus {
     outline: none;
 }
+
+.card {
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-header h3 {
+    margin-bottom: 0;
+}
+
+.table-striped tbody, tr:nth-of-type(odd) {
+    background-color: #444;
+    color:white;
+}
+.table-striped thead, th:nth-of-type(odd) {
+    background-color: #444;
+    color: #fff;
+}
+
+.table td {
+    vertical-align: middle;
+    background-color: #444;
+    color: #fff;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    background-color: #555;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: #f2f2f2;
+}
+
+.btn-decrease,
+.btn-increase {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-decrease:hover,
+.btn-increase:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.card {
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+    background-color: #444;
+    color: #fff;
+    padding: 1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-header h3 {
+    margin-bottom: 0;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    background-color: #555;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: #f2f2f2;
+}
+
+.btn-decrease,
+.btn-increase {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-decrease:hover,
+.btn-increase:hover {
+    background-color: #3e8e41;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-primary {
+    background-color: yellow;
+    color: #000;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #3e8e41;
+}
+
+.h4 {
+    font-weight: bold;
+    color: #fff;
+}
+h1{
+    color:yellow;
+}
+
 </style>
 
 <body>
-    <header class="bg-secondary py-4">
+    <header class="bg-secondary py-4" >
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark">
                 <a class="navbar-brand" href="/">Vapeshop</a>

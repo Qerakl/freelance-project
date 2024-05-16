@@ -79,7 +79,7 @@
             </div>
         </section>
 
-        <section class="py-5 bg-white">
+        <section class="py-5">
             <div class="container">
                 <h2 class="section-title">Популярные товары</h2>
                 <p class="section-description">Эти товары пользуются наибольшим спросом у наших клиентов</p>

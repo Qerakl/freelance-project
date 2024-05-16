@@ -1,47 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="my-5">
+<section class="my-5" >
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <div class="card mb-4">
-                    <div class="card-header bg-secondary text-white">
+                    <div class="card-header">
                         <h3 class="mb-0">Личные данные</h3>
                     </div>
                     <div class="card-body">
-                        <form>
+                        @foreach ($users as $user)
+                        <form style="color:white" method="post" action="{{route('user/up')}}">
+                        @csrf
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="name" value="Иван Иванов">
+                                <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}" required>
                             </div>
                             <div class="mb-3">
-                                <input type="email" class="form-control" id="email" value="ivan@example.com">
+                                <input type="email" class="form-control" name="email" id="email" value="{{$user->email}}"required>
                             </div>
                             <div class="mb-3">
-                                <input type="date" class="form-control" id="dob" value="1990-01-01">
+                                <input type="date" class="form-control" id="dob" name="date" value="{{$user->date}}"required>
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" id="password" value="password123">
+                                <input type="password" class="form-control" id="password" placeholder="Пароль" name="password" minlength="6">
                             </div>
                             <div class="mb-3">
-                                <b style="font-size:20px">Ордер заказов: 2313</b> 
+                                <b style="font-size:20px">Ордер заказов: {{$user->id}}</b> 
                             </div>
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">Сохранить</button>
                             </div>
                         </form>
+                        
+                        @endforeach
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="card mb-4">
-                    <div class="card-header bg-secondary text-white">
+                    <div class="card-header">
                         <h3 class="mb-0">Текущие заказы</h3>
                     </div>
-                    <div class="card-body">
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="card-body" >
+                        <div class="row row-cols-1 row-cols-md-3 g-4" >
                             <div class="col">
-                                <div class="card h-100">
+                                <div class="card h-100" style="color:white">
                                     <img src="https://source.unsplash.com/400x400/?vape" class="card-img-top"
                                         alt="Товар 1">
                                     <div class="card-body">
@@ -52,59 +56,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="https://source.unsplash.com/400x400/?vape" class="card-img-top"
-                                        alt="Товар 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Товар 2</h5>
-                                        <p class="card-text">Кол-во: 2</p>
-                                        <p class="card-text">Цена: 1199 ₽</p>
-                                        <p class="card-text">Статус: Доставляется</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="https://source.unsplash.com/400x400/?vape" class="card-img-top"
-                                        alt="Товар 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Товар 3</h5>
-                                        <p class="card-text">Кол-во: 3</p>
-                                        <p class="card-text">Цена: 1599 ₽</p>
-                                        <p class="card-text">Статус: Ожидает доставки</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="https://source.unsplash.com/400x400/?vape" class="card-img-top"
-                                        alt="Товар 4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Товар 4</h5>
-                                        <p class="card-text">Кол-во: 1</p>
-                                        <p class="card-text">Цена: 799 ₽</p>
-                                        <p class="card-text">Статус: Обработка</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="https://source.unsplash.com/400x400/?vape" class="card-img-top"
-                                        alt="Товар 5">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Товар 5</h5>
-                                        <p class="card-text">Кол-во: 2</p>
-                                        <p class="card-text">Цена: 1499 ₽</p>
-                                        <p class="card-text">Статус: Доставляется</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="card mb-4">
-                    <div class="card-header bg-secondary text-white">
+                    <div class="card-header text-white">
                         <h3 class="mb-0">История заказов</h3>
                     </div>
                     <div class="card-body">
@@ -119,9 +75,9 @@
                                     <thead>
                                         <tr>
                                             <th>Товар</th>
-                                            <th>Кол-во</th>
+                                            <th style="background-color:#444; color:white">Кол-во</th>
                                             <th>Цена</th>
-                                            <th>Статус</th>
+                                            <th style="background-color:#444; color:white">Статус</th>
                                         </tr>
                                     </thead>
                                     <tbody>

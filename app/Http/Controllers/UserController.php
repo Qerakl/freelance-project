@@ -77,8 +77,28 @@ class UserController extends Controller
             'login_error' => 'Неверный логин или пароль. Пожалуйста, попробуйте снова.'
         ]);
     }
-    public function basket(){
+    public function profile(Request $request){
         $user_id = session('user.id');
-        return view('basket');
+        $users = User::where('id', $user_id)->get();
+        return view('profile', ['users' => $users]);
+    }
+    public function update(Request $request){
+        $user_id = session('user.id');
+        if(!empty($request->password)){
+            User::where('id', $user_id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'date' => $request->date,
+                'password' => Hash::make($request->password)
+            ]);
+            return redirect('profile');
+            }
+        User::where('id', $user_id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'date' => $request->date,
+            ]);
+            return redirect('profile');
+        
     }
 }
