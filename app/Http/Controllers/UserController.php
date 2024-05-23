@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Basket;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,16 +30,16 @@ class UserController extends Controller
             'date' => $request->date,
             'password' => Hash::make($request->password),
         ]);
-        
+
         Auth::login($user);
         if ($user) {
             $user = User::where('email', $request->email)->get();
             foreach($user as $row){
-                $request->session()->push('user.id', $row->id);
-                $request->session()->push('user.name', $row->name);
+                session(['user.id' => $row->id]);
+                session(['user.name' => $row->name]);
             }
             $token = $request->user()->createToken('mytoken')->plainTextToken;
-            
+
             return redirect('profile');
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
@@ -80,7 +82,8 @@ class UserController extends Controller
     public function profile(Request $request){
         $user_id = session('user.id');
         $users = User::where('id', $user_id)->get();
-        return view('profile', ['users' => $users]);
+        $orders = Order::where('user_id', $user_id)->get();
+        return view('profile', ['users' => $users, 'orders' => $orders]);
     }
     public function update(Request $request){
         $user_id = session('user.id');
@@ -99,6 +102,17 @@ class UserController extends Controller
                 'date' => $request->date,
             ]);
             return redirect('profile');
-        
+
     }
+    public function logout(Request $request)
+    {
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
 }

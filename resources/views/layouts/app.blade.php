@@ -12,8 +12,9 @@
 <style>
     body {
     font-family: 'Montserrat', sans-serif;
-    background-image: url('../../public/img/fon.jpg');
-    color: #f2f2f2; 
+    background-image: url('../../public/img/fon.png');
+    background-color: #444;
+    color: #f2f2f2;
 }
 
 .product-card {
@@ -134,7 +135,7 @@
 header.bg-secondary,
 footer.bg-secondary {
     background-color: #333 !important;
-    
+
     color: #f2f2f2;
 }
 
@@ -142,7 +143,7 @@ header a,
 footer a {
     color: #f2f2f2;
     text-decoration: none;
-    
+
 }
 
 header a:hover,
@@ -395,7 +396,7 @@ footer a:hover {
 
 .form-control-light {
     background-color: #555;
-    border: 1px solid #ced4da; 
+    border: 1px solid #ced4da;
     color: #f2f2f2;
 }
 
@@ -627,7 +628,7 @@ h1{
                                     <a class="nav-link" href="{{route('admin.create')}}">Добавить товар</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route('profile')}}">Админ панель</a>
+                                    <a class="nav-link" href="{{route('admin.index')}}">Админ панель</a>
                                 </li>
                             @else
                                 <li class="nav-item">
@@ -637,7 +638,9 @@ h1{
                                     <a class="nav-link" href="{{route('profile')}}">Личный кабинет</a>
                                 </li>
                             @endif
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('logout/' . session('user.id'))}}">Выйти</a>
+                            </li>
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('login')}}">Личный кабинет</a>

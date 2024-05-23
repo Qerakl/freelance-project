@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Basket extends Model
+class Order extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,7 @@ class Basket extends Model
         'tovar_name',
         'tovar_count',
         'tovar_price',
-        'tovar_img'
+        'tovar_img',
+        'status'
     ];
-
 }

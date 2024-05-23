@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tovar;
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,7 +15,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        
+            $user_id = session('user.id');
+            $users = User::where('id', $user_id)->get();
+            $orders = Order::all();
+            return view('admin.profile', ['users' => $users, 'orders' => $orders]);
     }
 
     /**
@@ -36,7 +41,7 @@ class AdminController extends Controller
             'price' => 'required',
             'description' => 'required',
             'img' => 'required',
-            
+
         ]);
         //добавление в бд
         $image = $request->file('img')->store('public');
@@ -76,7 +81,7 @@ class AdminController extends Controller
     {
         $tovars = Tovar::where('id', $id)->get();
         if(!empty($request->img)){
-            
+
             $image = $request->file('img')->store('public');
             $image = $request->img->hashName();
             Tovar::where('id', $id)->update([
@@ -101,7 +106,7 @@ class AdminController extends Controller
                 'price' => $request->price,
                 'description' => $request->description,
         ]);
-        
+
         return redirect('/');
     }
 
@@ -115,6 +120,33 @@ class AdminController extends Controller
             Storage::delete('public/'.$tovar->image); //удаление файла фото статьи
         }
         Tovar::where('id', $id)->delete();
+        return redirect('/');
+    }
+    public function del_order(Request $request)
+    {
+        $user_id = $request->user_id;
+        $tovar_id = $request->tovar_id;
+        $orders = Order::where('user_id', $user_id)->where('tovar_id', $tovar_id)->get();
+        foreach($orders as $order){
+            $tovars =Tovar::where('id', $order->tovar_id)->get();
+            foreach($tovars as $tovar){
+                Tovar::where('id', $order->tovar_id)->update([
+                    'count' => $tovar->count + $order->tovar_count
+                ]);
+            }
+        }
+        Order::where('user_id', $user_id)->where('tovar_id', $tovar_id)->update([
+            'status' => 'Отменен'
+        ]);
+        return redirect('/');
+    }
+    public function issued_order(Request $request)
+    {
+        $user_id = $request->user_id;
+        $tovar_id = $request->tovar_id;
+        $orders = Order::where('user_id', $user_id)->where('tovar_id', $tovar_id)->update([
+            'status' => 'Выдан'
+        ]);
         return redirect('/');
     }
 }

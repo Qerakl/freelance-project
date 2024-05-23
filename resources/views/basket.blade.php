@@ -27,7 +27,7 @@
                                 @csrf
                                     @foreach ($tovars as $key => $tovar)
                                     <tr>
-                                        <td><img style="width: 150px; height: 150px;" src="../../storage/app/public/{{$tovar->tovar_img}}" alt="{{$tovar->tovar_name}}" class="product-image"></td>
+                                        <td><img style="width: 150px; height: 150px;" src="{{asset('storage/'.$tovar->tovar_img)}}" alt="{{$tovar->tovar_name}}" class="product-image"></td>
                                         <td>{{$tovar->tovar_name}}</td>
                                         <td>
                                             <div class="input-group" style="margin-top: 10px">
@@ -35,9 +35,9 @@
                                                 <input type="number" style="width: 50px; text-align: center; margin-top:10px; border: 1px solid #666" min="1" max="{{$tovarMax[$key]}}" name="count{{$key}}" readonly class="form-control form-control-sm quantity-input" value="{{$tovar->tovar_count}}">
                                                 <button class="btn btn-outline-primary btn-increase"   style="height: 42px; margin-bottom: 14px; background-color:#666" data-id="{{ $tovar->tovar_id }}" data-max="{{$tovarMax[$key]}}">+</button>
                                             </div>
-                                            
+
                                         </td>
-                                        <td>{{$tovar->tovar_price * $tovar->tovar_count}} ₽</td>
+                                        <td>{{$tovar->tovar_price}} ₽</td>
                                         <td><a href="{{route('basket/del', $tovar->tovar_id)}}" class="btn btn-danger btn-delete" data-id="{{ $tovar->id }}">Удалить</a></td>
                                     </tr>
                                     @endforeach
@@ -55,7 +55,7 @@
                     </div>
                     <div class="card-body">
                         <p class="h4">Итого: {{$sum}} ₽</p>
-                        <a href="#" class="btn btn-primary btn-lg btn-block mt-3">Оформить заказ</a>
+                        <a href="/order" class="btn btn-primary btn-lg btn-block mt-3">Оформить заказ</a>
                     </div>
                 </div>
             </div>

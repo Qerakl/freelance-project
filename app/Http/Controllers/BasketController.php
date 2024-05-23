@@ -20,6 +20,7 @@ class BasketController extends Controller
                 $img = $tovar->img;
                 Basket::create([
                     'user_id' => $user_id,
+                    'user_name' => Auth::user()->name,
                     'tovar_id' => $tovar_id,
                     'tovar_name' => $tovar->name,
                     'tovar_count' => 1,
@@ -41,7 +42,7 @@ class BasketController extends Controller
         $sum = 0;
         foreach ($tovars as $key => $tovar) {
             $tovars_count = Tovar::where('id', $tovar->tovar_id)->get();
-            $sum += $tovar->tovar_count * $tovar->tovar_price;
+            $sum += $tovar->tovar_price;
             foreach ($tovars_count as $row) {
                 $tovarsInTovars[$key] = $row->count;
             }
@@ -54,10 +55,14 @@ class BasketController extends Controller
         $basket = Basket::where('user_id', $user)->get();
         foreach ($basket as $key => $row) {
             $count = $request->input('count' . $key);
-            Basket::where('user_id', $user)->where('tovar_id', $row->tovar_id)
+            $tovars = Tovar::where('id', $row->tovar_id)->get();
+            foreach($tovars as $tovar){
+                Basket::where('user_id', $user)->where('tovar_id', $row->tovar_id)
                 ->update([
-                    'tovar_count' => $count
+                    'tovar_count' => $count,
+                    'tovar_price' => $count*$tovar->price
                 ]);
+            }
         }
         return redirect('basket');
 

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('baskets', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
             $table->string('user_name');
@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('tovar_count');
             $table->unsignedInteger('tovar_price');
             $table->text('tovar_img');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('baskets');
+        Schema::dropIfExists('orders');
     }
 };

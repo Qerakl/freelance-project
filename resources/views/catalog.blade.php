@@ -29,17 +29,18 @@
         </div>
 
         <div class="row product-grid active" data-category="all">
+
         @foreach ($tovars as $tovar)
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="product-card" data-product-id="1" data-category="liquids">
-                    <img src="storage/app/public/{{$tovar->img}}" alt="Товар 1">
+                    <img src="{{asset('storage/'.$tovar->img)}}" alt="Товар 1">
                     <div class="card-body">
                         <h3 class="card-title">{{$tovar->name}}</h3>
                         <div class="card-price">{{$tovar->price}} ₽</div>
                         <a href="{{url('show/'.$tovar->id)}}" class="btn btn-primary">Подробнее</a>
                     </div>
                 </div>
-            </div>  
+            </div>
         @endforeach
         </div>
 
@@ -59,19 +60,21 @@
         </div>
         @endforeach
 
+        @foreach ($pods as $pod)
         <div class="row product-grid" data-category="pod" style="display: none;">
             <!-- Товары категории "POD-системы" -->
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="product-card" data-product-id="1" data-category="liquids">
-                    <img src="https://source.unsplash.com/400x400/?vape" alt="Товар 1">
+                    <img src="storage/app/public/{{$pod->img}}" alt="Товар 1">
                     <div class="card-body">
-                        <h3 class="card-title">Товар 1</h3>
-                        <div class="card-price">1999 ₽</div>
-                        <a href="#" class="btn btn-primary">Подробнее</a>
+                        <h3 class="card-title">{{$pod->name}}</h3>
+                        <div class="card-price">{{$pod->price}} ₽</div>
+                        <a href="show/{{$pod->id}}" class="btn btn-primary">Подробнее</a>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
 
         <div class="row product-grid" data-category="disposable" style="display: none;">
             <!-- Товары категории "Одноразовые вейпы" -->

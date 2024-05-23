@@ -39,31 +39,6 @@
             </div>
             <div class="col-md-8">
                 <div class="card mb-4">
-                    <div class="card-header">
-                        <h3 class="mb-0">Текущие заказы</h3>
-                    </div>
-                    <div class="card-body" >
-                        <div class="row row-cols-1 row-cols-md-3 g-4" >
-                            @foreach ($orders as $order)
-                            @if ($order->status != 'Выдан' and $order->status != 'Отменен')
-                                <div class="col">
-                                <div class="card h-100" style="color:white">
-                                    <img src="{{asset('storage/'.$order->tovar_img)}}" class="card-img-top"
-                                        alt="Товар 1">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{$order->tovar_name}}</h5>
-                                        <p class="card-text">Кол-во: {{$order->tovar_count}}</p>
-                                        <p class="card-text">Цена: {{$order->tovar_price}} ₽</p>
-                                        <p class="card-text">Статус: {{$order->status}}</p>
-                                    </div>
-                                </div>
-                                </div>
-                            @endif
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4">
                     <div class="card-header text-white">
                         <h3 class="mb-0">История заказов</h3>
                     </div>
@@ -78,27 +53,26 @@
                                 <table class="table table-striped table-hover" style="text-align:center;">
                                     <thead>
                                         <tr>
-                                            <th>Товар</th>
-                                            <th style="background-color:#444; color:white">Кол-во</th>
-                                            <th>Цена</th>
-                                            <th style="background-color:#444; color:white">Статус</th>
+                                            <th>Имя</th>
+                                            <th style="background-color:#444; color:white">Товар</th>
+                                            <th >Кол-во</th>
+                                            <th style="background-color:#444; color:white"> Цена</th>
+                                            <th >Статус</th>
+                                            <th style="background-color:#444; color:white"> Действие</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($orders as $order)
-                                            @if ($order->status == 'Выдан')
+                                            @if ($order->status == 'Выдан' || $order->status == 'Отменен')
+
+                                            @else
                                             <tr>
+                                                <td>{{$order->user_name}}</td>
                                                 <td>{{$order->tovar_name}}</td>
                                                 <td>{{$order->tovar_count}}</td>
                                                 <td>{{$order->tovar_price}} ₽</td>
-                                                <td style="color: green">{{$order->status}}</td>
-                                            </tr>
-                                            @elseif ($order->status == 'Отменен')
-                                            <tr>
-                                                <td>{{$order->tovar_name}}</td>
-                                                <td>{{$order->tovar_count}}</td>
-                                                <td>{{$order->tovar_price}} ₽</td>
-                                                <td style="color: red">{{$order->status}}</td>
+                                                <td>{{$order->status}}</td>
+                                                <td><a href="{{url('admin/order/'.$order->user_id.'/'.$order->tovar_id)}}" type="submit" class="btn btn-primary" >Выдан</a> <a href="{{url('/admin/del/order/'.$order->user_id.'/'.$order->tovar_id)}}" type="submit"class="btn btn-primary" >Отменен</a></td>
                                             </tr>
                                             @endif
                                         @endforeach
