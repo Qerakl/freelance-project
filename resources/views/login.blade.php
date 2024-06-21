@@ -18,7 +18,7 @@
 @endif
                     <form id="loginForm" action="{{ route('login') }}" method="POST">
                     @csrf
-                    @method('POST')  
+                    @method('POST')
                         <div class="form-group mb-4">
                             <label for="loginEmail" class="form-label">Email</label>
                             <input type="email" class="form-control shadow-sm" id="loginEmail" name="email" placeholder="Введите ваш email" required>
@@ -49,7 +49,7 @@
                 <div class="auth-card p-5 rounded-3 shadow-lg">
                     <form id="registerForm" action="{{ route('register') }}" method="POST">
                     @csrf
-                    @method('POST')  
+                    @method('POST')
                         <div class="form-group">
                             <label for="registerName" class="form-label">Имя</label>
                             <input type="text" class="form-control shadow-sm" id="registerName"  name="name" placeholder="Введите ваше имя" required>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <label for="registerBirthdate" class="form-label">Дата рождения</label>
-                            <input type="date" class="form-control shadow-sm" id="registerBirthdate" name="date" required>
+                            <input type="date" value="2018-07-22" max="2006-01-01" class="form-control shadow-sm" id="registerBirthdate" name="date" required>
                         </div>
                         <div class="form-group">
                             <label for="registerPassword" class="form-label">Пароль</label>
@@ -97,6 +97,6 @@
     });
 
 
-    
+
 </script>
 @endsection

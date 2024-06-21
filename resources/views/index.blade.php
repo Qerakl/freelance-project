@@ -5,7 +5,7 @@
             <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active"
-                        style="background-image: url('https://source.unsplash.com/1920x800/?vape');">
+                        style="background-image: url('storage/images(1).jpeg');">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>Добро пожаловать в Вейп-шоп</h1>
                             <p>Лучшие вейп-устройства и жидкости по самым низким ценам</p>
@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="carousel-item"
-                        style="background-image: url('https://source.unsplash.com/1920x800/?vape,device');">
+                        style="background-image: url('storage/images (2).png');">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>Широкий ассортимент товаров</h1>
                             <p>Мы предлагаем большой выбор продукции на любой вкус</p>
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="carousel-item"
-                        style="background-image: url('https://source.unsplash.com/1920x800/?vape,liquid');">
+                        style="background-image: url('storage/images (3).jpeg');">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>Гарантия качества</h1>
                             <p>Вся наша продукция проходит строгий контроль качества</p>

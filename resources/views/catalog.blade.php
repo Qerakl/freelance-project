@@ -49,7 +49,7 @@
             <!-- Товары категории "Жидкости" -->
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="product-card" data-product-id="1" data-category="liquids">
-                    <img src="storage/app/public/{{$liquid->img}}" alt="Товар 1">
+                    <img src="storage/{{$liquid->img}}" alt="Товар 1">
                     <div class="card-body">
                         <h3 class="card-title">{{$liquid->name}}</h3>
                         <div class="card-price">{{$liquid->price}} ₽</div>
@@ -65,7 +65,7 @@
             <!-- Товары категории "POD-системы" -->
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="product-card" data-product-id="1" data-category="liquids">
-                    <img src="storage/app/public/{{$pod->img}}" alt="Товар 1">
+                    <img src="storage/{{$pod->img}}" alt="Товар 1">
                     <div class="card-body">
                         <h3 class="card-title">{{$pod->name}}</h3>
                         <div class="card-price">{{$pod->price}} ₽</div>

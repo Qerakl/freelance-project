@@ -138,7 +138,7 @@ class AdminController extends Controller
         Order::where('user_id', $user_id)->where('tovar_id', $tovar_id)->update([
             'status' => 'Отменен'
         ]);
-        return redirect('/');
+        return redirect('admin');
     }
     public function issued_order(Request $request)
     {
@@ -147,6 +147,6 @@ class AdminController extends Controller
         $orders = Order::where('user_id', $user_id)->where('tovar_id', $tovar_id)->update([
             'status' => 'Выдан'
         ]);
-        return redirect('/');
+        return redirect('admin');
     }
 }

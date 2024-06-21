@@ -23,9 +23,6 @@
                                 <input type="date" class="form-control" id="dob" name="date" value="{{$user->date}}"required>
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" id="password" placeholder="Пароль" name="password" minlength="6">
-                            </div>
-                            <div class="mb-3">
                                 <b style="font-size:20px">Ордер заказов: {{$user->id}}</b>
                             </div>
                             <div class="d-flex justify-content-end">

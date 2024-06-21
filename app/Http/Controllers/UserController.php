@@ -86,16 +86,12 @@ class UserController extends Controller
         return view('profile', ['users' => $users, 'orders' => $orders]);
     }
     public function update(Request $request){
+        $valid = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|unique:users|email',
+            'date' => 'required|date',
+        ]);
         $user_id = session('user.id');
-        if(!empty($request->password)){
-            User::where('id', $user_id)->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'date' => $request->date,
-                'password' => Hash::make($request->password)
-            ]);
-            return redirect('profile');
-            }
         User::where('id', $user_id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
