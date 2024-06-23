@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\NewTovarController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TovarController;
 use App\Http\Controllers\UserController;
@@ -19,10 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
+Route::get('/',[NewTovarController::class, 'index']);
+
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 Route::get('/profile',[UserController::class, 'profile'])->name('profile');
 Route::get('/logout/{id}',[UserController::class, 'logout'])->name('logout');

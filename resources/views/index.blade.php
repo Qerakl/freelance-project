@@ -44,37 +44,20 @@
             <div class="container">
                 <h2 class="section-title">Новинки</h2>
                 <p class="section-description">Ознакомьтесь с нашими последними поступлениями</p>
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 mb-4">
-                        <div class="product-card">
-                            <img src="https://source.unsplash.com/400x400/?vape" alt="Товар 1">
-                            <div class="card-body">
-                                <h3 class="card-title">Товар 1</h3>
-                                <div class="card-price">999 ₽</div>
-                                <a href="#" class="btn btn-primary">Добавить в корзину</a>
+                <div class="row product-grid active" data-category="all">
+
+                    @foreach ($tovars->sortByDesc('created_at')->take(3) as $tovar)
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="product-card" data-product-id="1" data-category="liquids">
+                                <img src="{{asset('storage/'.$tovar->img)}}" alt="Товар 1">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{$tovar->name}}</h3>
+                                    <div class="card-price">{{$tovar->price}} ₽</div>
+                                    <a href="{{url('show/'.$tovar->id)}}" class="btn btn-primary">Подробнее</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 mb-4">
-                        <div class="product-card">
-                            <img src="https://source.unsplash.com/400x400/?vape" alt="Товар 2">
-                            <div class="card-body">
-                                <h3 class="card-title">Товар 2</h3>
-                                <div class="card-price">1999 ₽</div>
-                                <a href="#" class="btn btn-primary">Добавить в корзину</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 mb-4">
-                        <div class="product-card">
-                            <img src="https://source.unsplash.com/400x400/?vape" alt="Товар 3">
-                            <div class="card-body">
-                                <h3 class="card-title">Товар 3</h3>
-                                <div class="card-price">2499 ₽</div>
-                                <a href="#" class="btn btn-primary">Добавить в корзину</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -83,37 +66,20 @@
             <div class="container">
                 <h2 class="section-title">Популярные товары</h2>
                 <p class="section-description">Эти товары пользуются наибольшим спросом у наших клиентов</p>
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 mb-4">
-                        <div class="product-card">
-                            <img src="https://source.unsplash.com/400x400/?vape" alt="Товар 5">
-                            <div class="card-body">
-                                <h3 class="card-title">Товар 5</h3>
-                                <div class="card-price">1299 ₽</div>
-                                <a href="#" class="btn btn-primary">Добавить в корзину</a>
+                <div class="row product-grid active" data-category="all">
+
+                    @foreach ($tovars->take(3) as $tovar)
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="product-card" data-product-id="1" data-category="liquids">
+                                <img src="{{asset('storage/'.$tovar->img)}}" alt="Товар 1">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{$tovar->name}}</h3>
+                                    <div class="card-price">{{$tovar->price}} ₽</div>
+                                    <a href="{{url('show/'.$tovar->id)}}" class="btn btn-primary">Подробнее</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 mb-4">
-                        <div class="product-card">
-                            <img src="https://source.unsplash.com/400x400/?vape" alt="Товар 6">
-                            <div class="card-body">
-                                <h3 class="card-title">Товар 6</h3>
-                                <div class="card-price">999 ₽</div>
-                                <a href="#" class="btn btn-primary">Добавить в корзину</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 mb-4">
-                        <div class="product-card">
-                            <img src="https://source.unsplash.com/400x400/?vape" alt="Товар 7">
-                            <div class="card-body">
-                                <h3 class="card-title">Товар 7</h3>
-                                <div class="card-price">1799 ₽</div>
-                                <a href="#" class="btn btn-primary">Добавить в корзину</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(session('user.role') == 'admin')
 <section class="my-5" >
     <div class="container">
         <div class="row">
@@ -81,5 +82,9 @@
         </div>
     </div>
 </section>
+
+@else
+<h1>Вы не админ!!</h1>
+@endif
 
 @endsection

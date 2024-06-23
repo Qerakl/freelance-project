@@ -648,7 +648,7 @@ h1{
                         @endif
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Контакты</a>
+                            <a class="nav-link" href="{{url('contact')}}">Контакты</a>
                         </li>
                     </ul>
                 </div>
@@ -674,10 +674,9 @@ h1{
                     <div class="footer-block">
                         <h4 class="mb-4">Навигация</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Главная</a></li>
-                            <li><a href="#" class="text-white">Каталог</a></li>
-                            <li><a href="#" class="text-white">Корзина</a></li>
-                            <li><a href="#" class="text-white">Личный кабинет</a></li>
+                            <li><a href="/" class="text-white">Главная</a></li>
+                            <li><a href="{{route('catalog')}}" class="text-white">Каталог</a></li>
+                            <li><a href="{{route('profile')}}" class="text-white">Личный кабинет</a></li>
                             <li><a href="#" class="text-white">Контакты</a></li>
                         </ul>
                     </div>

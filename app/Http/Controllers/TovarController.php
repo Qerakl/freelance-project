@@ -11,8 +11,7 @@ class TovarController extends Controller
         $tovars = Tovar::all();
         $liquids = Tovar::where('category', 'Жидкость')->get();
         $pods = Tovar::where('category', 'POD')->get();
-        $disposables = Tovar::where('category', 'Одноразовый вейп')->get();
-        return view('catalog', ['tovars' => $tovars, 'liquids' => $liquids, 'pods' => $pods, 'disposables' => $disposables]);
+        return view('catalog', ['tovars' => $tovars, 'liquids' => $liquids, 'pods' => $pods]);
     }
     public function show(Request $request){
         $tovars = Tovar::where('id', $request->id)->get();
